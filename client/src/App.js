@@ -4,10 +4,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom"
-import './App.css';
+
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Chat from './pages/Chat';
+import SetAvatar from './pages/SetAvatar';
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
             
             <Route exact path="/register" element={<Register/>}></Route>
             <Route exact path="/login" element={<Login/>}></Route>
-            <Route exact path="/chat" element={<Chat/>}></Route>
+            <Route exact path="/" element={<Chat/>}></Route>
+            <Route exact path="/setAvatar" element={<SetAvatar/>}></Route>
 
           </Routes>
       

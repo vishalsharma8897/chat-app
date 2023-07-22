@@ -1,4 +1,4 @@
-const { register,login} = require("../controllers/usersController");
+const { register,login,setAvatar,getAllUsers} = require("../controllers/usersController");
 const router = require('express').Router();
 const { body } = require('express-validator');
 
@@ -22,5 +22,9 @@ router.post("/login",[
     .withMessage("Password must be at least 8 characters"),
 
 ], login);
+
+router.post("/setAvatar/:id",setAvatar);
+
+router.get("/allUsers/:id",getAllUsers)
 
 module.exports= router;

@@ -22,17 +22,17 @@ export default function SetAvatar() {
     theme: "dark",
   };
 
-//   useEffect(async () => {
-//     if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
-//       navigate("/login");
-//   }, []);
+  useEffect( () => {
+    if (!localStorage.getItem('chat-app-user'))
+      navigate("/login");
+  }, []);
 
   const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
       toast.error("Please select an avatar", toastOptions);
     } else {
       const user = await JSON.parse(
-        localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+        localStorage.getItem('chat-app-user')
       );
 
       const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
@@ -43,7 +43,7 @@ export default function SetAvatar() {
         user.isAvatarImageSet = true;
         user.avatarImage = data.image;
         localStorage.setItem(
-          process.env.REACT_APP_LOCALHOST_KEY,
+          'chat-app-user',
           JSON.stringify(user)
         );
         navigate("/");

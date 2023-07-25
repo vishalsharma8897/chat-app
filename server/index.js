@@ -8,20 +8,7 @@ const userRoutes= require("./Routes/userRoutes");
 const messagesRoute= require("./Routes/messagesRoute");
 
 
-const app = express();
-const allowedOrigins = ['https://mern-chat-app-frontend-khaf.onrender.com'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-
-// Enable CORS for all routes
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 
@@ -38,12 +25,7 @@ const server = app.listen(port,()=>{
     console.log("Server started at " + port);
 })
 
- const io = socket(server,{
-    cors:{
-        origin:"https://mern-chat-app-frontend-khaf.onrender.com",
-        credentials:true,
-    }
- })
+ const io = socket(server);
 
  global.onlineUsers= new Map();
 

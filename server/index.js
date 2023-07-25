@@ -22,12 +22,7 @@ const server = app.listen(port, () => {
 });
 
 // Enable CORS for Socket.IO
-const io = socket(server, {
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-});
+const io = socket(server);
 
 global.onlineUsers = new Map();
 

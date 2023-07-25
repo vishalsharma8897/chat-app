@@ -1,4 +1,4 @@
-export const host = "https://mern-chat-backend-es16.onrender.com"
+export const host =   process.env.HOST || "https://mern-chat-backend-es16.onrender.com"
 
 export const registerRoute = `${host}/api/auth/register`                            
 export const loginRoute = `${host}/api/auth/login`                            

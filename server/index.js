@@ -10,12 +10,8 @@ const messagesRoute= require("./Routes/messagesRoute");
 
 const app = express();
 
-const allowedOrigin = "https://mern-chat-app-frontend-khaf.onrender.com";
 
-// Enable CORS with specific origin allowed
-app.use(cors({
-  origin: allowedOrigin,
-}));
+app.use(cors());
 
 app.use(express.json());
 

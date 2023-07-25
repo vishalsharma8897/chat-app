@@ -7,9 +7,6 @@ export default function Contacts({ contacts, currentUser,changeChat}) {
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);  
   useEffect( () => {
-    // const data = await JSON.parse(
-    //   localStorage.getItem('chat-app-user')
-    // );
     if(currentUser)
      {
     setCurrentUserName(currentUser.username);
@@ -26,26 +23,35 @@ export default function Contacts({ contacts, currentUser,changeChat}) {
     <>
       {currentUserImage && currentUserName && (
         <Container>
+
+          {/* --logo and heading code  for contacts commponets */}
           <div className="brand">
             <img src={Logo} alt="logo" />
             <h3>snappy</h3>
           </div>
+
+        
           <div className="contacts">
             {contacts.map((contact, index) => {
               return (
+
+                // mapping all the elements of array into markup array of div haveing classname , two divs inside it having img and username
+
                 <div
                   key={contact._id}
                   className={`contact ${
                     index === currentSelected ? "selected" : ""
                   }`}
-                  onClick={() => changeCurrentChat(index, contact)}
+                  onClick={() => {
+                    changeCurrentChat(index, contact)}}
                 >
+               
+                 {/* img */}
                   <div className="avatar">
-                    <img
-                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                      alt=""
-                    />
+                    <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} alt="" />
                   </div>
+
+                 {/* name of contact */}
                   <div className="username">
                     <h3>{contact.username}</h3>
                   </div>
@@ -54,6 +60,9 @@ export default function Contacts({ contacts, currentUser,changeChat}) {
             })}
           </div>
 
+
+
+        {/* showing the currentuser */}
           <div className="current-user">
             <div className="avatar">
               <img

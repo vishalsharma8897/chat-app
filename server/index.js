@@ -8,6 +8,9 @@ const userRoutes= require("./Routes/userRoutes");
 const messagesRoute= require("./Routes/messagesRoute");
 
 
+const app = express();
+
+// Enable CORS for all routes
 app.use(cors());
 app.use(express.json());
 

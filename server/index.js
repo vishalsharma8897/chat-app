@@ -9,7 +9,19 @@ const messagesRoute= require("./Routes/messagesRoute");
 
 
 const app = express();
-app.use(cors());
+const allowedOrigins = ['https://mern-chat-front.onrender.com'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+// Enable CORS for all routes
+app.use(cors(corsOptions));
 app.use(express.json());
 
 

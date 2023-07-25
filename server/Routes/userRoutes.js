@@ -16,6 +16,8 @@ router.post("/register",[
 router.post("/login",[
   
   // Define validation rules using express-validator's check function
+ 
+
   body("username").isLength({ min: 4 }).withMessage("Name must has atleast 4 characters"),
   body("password")
     .isLength({ min: 8})

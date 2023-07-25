@@ -29,12 +29,7 @@ const server = app.listen(port,()=>{
     console.log("Server started at " + port);
 })
 
- const io = socket(server,{
-    cors:{
-        origin:"https://mern-chat-app-frontend-khaf.onrender.com",
-        credentials:true,
-    }
- })
+ const io = socket(server);
 
  global.onlineUsers= new Map();
 

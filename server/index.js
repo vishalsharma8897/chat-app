@@ -9,7 +9,7 @@ const messagesRoute= require("./Routes/messagesRoute");
 
 
 const app = express();
-const allowedOrigins = ['https://mern-chat-front.onrender.com'];
+const allowedOrigins = ['https://mern-chat-app-frontend-khaf.onrender.com'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin) || !origin) {
@@ -40,7 +40,7 @@ const server = app.listen(port,()=>{
 
  const io = socket(server,{
     cors:{
-        origin:"https://mern-chat-front-khen.onrender.com",
+        origin:"https://mern-chat-app-frontend-khaf.onrender.com",
         credentials:true,
     }
  })

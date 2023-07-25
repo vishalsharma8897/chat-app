@@ -48,7 +48,7 @@ const { validationResult } = require('express-validator');
 };
 
 module.exports.login= async(req,res,next)=>{
-     
+  alert("login route on server");
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.json({ success:false ,  errors: errors.array() });

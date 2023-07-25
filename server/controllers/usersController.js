@@ -2,9 +2,7 @@ const User= require("../models/UserModel")
 const brcypt = require("bcrypt");
 const { validationResult } = require('express-validator');
 
-  module.exports.register= async(req,res,next)=>{
-      console.log("i have a problem "); 
-
+  module.exports.register= async(req,res)=>{
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -58,14 +56,14 @@ module.exports.login= async(req,res)=>{
  try {
   const {username,password} = req.body;
   const user = await User.findOne({username});
-
+  
   if(!user)
   return res.json({message:"Please enter correct crediantials",success:false});
  
   const isPasswordValid = await brcypt.compare(password,user.password);
   if(!isPasswordValid)
   {
-    return res.json({message:"Please enter correct crediantials",success:false});
+    return res.json({message:"password not valid ",success:false});
   }
 
   const userWithoutPassword = { ...user.toObject() };

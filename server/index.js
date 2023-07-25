@@ -40,7 +40,7 @@ const server = app.listen(port,()=>{
 
  const io = socket(server,{
     cors:{
-        origin:"https://mern-chat-frontend-khen.onrender.com",
+        origin:"https://mern-chat-front-khen.onrender.com",
         credentials:true,
     }
  })

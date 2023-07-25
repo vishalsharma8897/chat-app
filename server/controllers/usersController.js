@@ -3,7 +3,9 @@ const brcypt = require("bcrypt");
 const { validationResult } = require('express-validator');
 
   module.exports.register= async(req,res,next)=>{
-     
+      console.log("i have a problem "); 
+
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ success:false ,  errors: errors.array() });
@@ -47,8 +49,7 @@ const { validationResult } = require('express-validator');
 
 };
 
-module.exports.login= async(req,res,next)=>{
-  alert("login route on server"); 
+module.exports.login= async(req,res)=>{
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.json({ success:false ,  errors: errors.array() });

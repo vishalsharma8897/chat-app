@@ -59,22 +59,26 @@ const Login = () => {
         {
           const { password ,username} = values;
 
-          const {data} = await axios.post(loginRoute,{
-            username,password
-          });
-          
-          
+           try {
+            const {data} = await axios.post(loginRoute,{
+              username,password
+            });
+            console.log(data);
+            if(data.success===false)
+            {
+              toast.error(data.message,options);
+            }
+            
+            if(data.success === true)
+            {
+              localStorage.setItem("chat-app-user",JSON.stringify(data.userWithoutPassword));
+              navigate("/");
+            }
 
-          if(data.success===false)
-          {
-            toast.error(data.message,options);
-          }
-          
-          if(data.success === true)
-          {
-            localStorage.setItem("chat-app-user",JSON.stringify(data.userWithoutPassword));
-            navigate("/");
-          }
+           } catch (error) {
+            console.error("Error during login:", error);
+            toast.error("An error occurred during login. Please try again later.", options);
+           }
 
 
         }

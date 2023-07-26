@@ -13,16 +13,27 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-
-let port = process.env.PORT || 8080;
+// let port = process.env.PORT || 8080,
+let port = 8080;
 connectToMongo();
+
+// Availbale routes;
+app.use('/api/auth',userRoutes);    // router object wiil be replaced by require(...) and  wiill act as a middleware function 
+app.use('/api/messages',messagesRoute);
+
 
 const server = app.listen(port, () => {
     console.log("Server started at " + port);
 });
 
+
+
+
 // Enable CORS for Socket.IO
-const io = socket(server);
+const io = socket(server,cors({
+    origin:"http://localhost:3000",
+    credential:true,
+}));
 
 global.onlineUsers = new Map();
 

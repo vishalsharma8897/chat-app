@@ -55,6 +55,7 @@ module.exports.login= async(req,res)=>{
 
  try {
   const {username,password} = req.body;
+  console.log("login hua");
   const user = await User.findOne({username});
   
   if(!user)

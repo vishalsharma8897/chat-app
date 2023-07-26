@@ -13,8 +13,8 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-// let port = process.env.PORT || 8080,
-let port = 8080;
+let port = process.env.PORT || 8080;
+
 connectToMongo();
 
 // Availbale routes;
@@ -29,11 +29,14 @@ const server = app.listen(port, () => {
 
 
 
-// Enable CORS for Socket.IO
-const io = socket(server,cors({
-    origin:"http://localhost:3000",
-    credential:true,
-}));
+const io = socket(server, {
+    cors: {
+      origin: "https://mern-chat-app-frontend-khaf.onrender.com",
+      methods: ["GET", "POST"],
+      credentials: true,
+    },
+  });
+  
 
 global.onlineUsers = new Map();
 

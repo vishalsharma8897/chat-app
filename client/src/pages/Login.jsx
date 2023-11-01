@@ -94,7 +94,7 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div className="brand">
             <img src={Logo} alt="Mylogo" />
-            <h1>snappy</h1>
+            <h1>Talkie</h1>
           </div>
           <input type="text" placeholder='Username' name='username' onChange={handleOnChange}    required/>
           <input type="password" placeholder='Password' name='password' onChange={handleOnChange}    required/>

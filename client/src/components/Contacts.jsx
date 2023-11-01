@@ -27,7 +27,7 @@ export default function Contacts({ contacts, currentUser,changeChat}) {
           {/* --logo and heading code  for contacts commponets */}
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h3>snappy</h3>
+            <h3>Talkie</h3>
           </div>
 
         
